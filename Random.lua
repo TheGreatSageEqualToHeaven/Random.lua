@@ -1,4 +1,4 @@
-Random = {}
+local Random = {}
 Random.__index = Random
 
 local function NormalizeNumber(num)
@@ -13,7 +13,7 @@ local function RandomizeSeed(seed, object)
 	object[2] = object[4]
 	object[5] = NormalizeNumber(seed)
 
-  return object
+	return object
 end
 
 local function CopyTable(Table)
