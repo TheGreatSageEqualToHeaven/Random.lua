@@ -7,7 +7,7 @@ end
 
 local function RandomizeSeed(seed, object)
 	if not seed then
-		seed = NormalizeNumber(os.time())
+		seed = os.time()
 	end
 
 	object[2] = object[4]
