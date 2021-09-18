@@ -2,7 +2,7 @@ local SuperClass = {}
 SuperClass.__index = SuperClass
 
 --// Added by my boyfriend
-local mathfloor = math and math.floor function(n)
+local mathfloor = math and math.floor or function(n)
     return n - n % 1
 end
 
