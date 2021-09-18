@@ -1,5 +1,3 @@
---// haha custom number randomization go brr, name stolen from roblox's Random api
-
 Random = {}
 Random.__index = function(t, i)
     if i == "RandomizeSeed" then 
