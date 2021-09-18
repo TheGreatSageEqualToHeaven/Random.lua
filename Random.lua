@@ -1,12 +1,12 @@
 Random = {}
 Random.__index = function(t, i)
-    if i == "RandomizeSeed" then 
-    return nil 
-    elseif i == "PrivateRandomizeSeed" then
-    return rawget(Random, "RandomizeSeed")
-    end
+	if i == "RandomizeSeed" then
+		return nil
+	elseif i == "PrivateRandomizeSeed" then
+		return rawget(Random, "RandomizeSeed")
+	end
 
-    return rawget(Random, i)
+	return rawget(Random, i)
 end
 
 local function NormalizeNumber(n)
@@ -34,7 +34,7 @@ function Random:NextNumber(floor, ceil)
 end
 
 function Random:NextInteger(floor, ceil)
-   return math.floor(self:NextNumber(floor, ceil))
+	return math.floor(self:NextNumber(floor, ceil))
 end
 
 function Random:RandomizeSeed(seed)
@@ -46,20 +46,20 @@ function Random:RandomizeSeed(seed)
 end
 
 local function CopyTable(Table)
-  local clone = {}
-  for i,v in pairs(Table) do
-    if type(v) == "table" then
-         clone[i] = CopyTable(v)
-    else
-         clone[i] = v
-    end
-  end
+	local clone = {}
+	for i, v in pairs(Table) do
+		if type(v) == "table" then
+			clone[i] = CopyTable(v)
+		else
+			clone[i] = v
+		end
+	end
 
-  return clone
+	return clone
 end
 
 function Random:Clone()
-   return setmetatable(CopyTable(self), Random)
+	return setmetatable(CopyTable(self), Random)
 end
 
 function Random.new(seed)
@@ -71,3 +71,6 @@ function Random.new(seed)
 
 	return object
 end
+
+
+return Random
