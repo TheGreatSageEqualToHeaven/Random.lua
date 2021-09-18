@@ -1,5 +1,5 @@
-local Random = {}
-Random.__index = Random
+local SuperClass = {}
+SuperClass.__index = SuperClass
 
 local function NormalizeNumber(num)
 	return num % 0x80000000
@@ -18,18 +18,15 @@ end
 
 local function CopyTable(Table)
 	local clone = {}
+
 	for i, v in pairs(Table) do
-		if type(v) == "table" then
-			clone[i] = CopyTable(v)
-		else
-			clone[i] = v
-		end
+		clone[i] = v
 	end
 
 	return clone
 end
 
-function Random:NextNumber(floor, ceil)
+function SuperClass:NextNumber(floor, ceil)
 	local rand1, rand2 = self[3], self[1] * self[5] + self[2]
 	local rand3 = rand2 % rand1
 
@@ -49,16 +46,18 @@ function Random:NextNumber(floor, ceil)
 	end
 end
 
-function Random:NextInteger(floor, ceil)
+function SuperClass:NextInteger(floor, ceil)
 	return math.floor(self:NextNumber(floor, ceil))
 end
 
-function Random:Clone()
-	return setmetatable(CopyTable(self), Random)
+function SuperClass:Clone()
+	return setmetatable(CopyTable(self), SuperClass)
 end
 
+local Random = {}
+
 function Random.new(seed)
-	local object = setmetatable({}, Random)
+	local object = setmetatable({}, SuperClass)
 
 	object[1], object[2], object[3] = 1103515245, 12345, 0x10000
 	object[4] = object[2]
