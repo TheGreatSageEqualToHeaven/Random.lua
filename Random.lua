@@ -1,6 +1,11 @@
 local SuperClass = {}
 SuperClass.__index = SuperClass
 
+--// Added by my boyfriend
+local mathfloor = math and math.floor function(n)
+    return n - n % 1
+end
+
 local function NormalizeNumber(num)
 	return num % 0x80000000
 end
@@ -31,7 +36,7 @@ function SuperClass:NextNumber(floor, ceil)
 	local rand3 = rand2 % rand1
 
 	self[5] = rand3
-	self[2] = math.floor(rand2 / rand1)
+	self[2] = mathfloor(rand2 / rand1)
 
 	if not floor then
 		return rand3 / 0x10000
@@ -47,7 +52,7 @@ function SuperClass:NextNumber(floor, ceil)
 end
 
 function SuperClass:NextInteger(floor, ceil)
-	return math.floor(self:NextNumber(floor, ceil))
+	return mathfloor(self:NextNumber(floor, ceil))
 end
 
 function SuperClass:Clone()
