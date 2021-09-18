@@ -9,8 +9,8 @@ Random.__index = function(t, i)
 	return rawget(Random, i)
 end
 
-local function NormalizeNumber(n)
-	return n % 0x80000000
+local function NormalizeNumber(num)
+	return num % 0x80000000
 end
 
 function Random:NextNumber(floor, ceil)
