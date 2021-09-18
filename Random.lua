@@ -16,6 +16,19 @@ local function RandomizeSeed(seed, object)
   return object
 end
 
+local function CopyTable(Table)
+	local clone = {}
+	for i, v in pairs(Table) do
+		if type(v) == "table" then
+			clone[i] = CopyTable(v)
+		else
+			clone[i] = v
+		end
+	end
+
+	return clone
+end
+
 function Random:NextNumber(floor, ceil)
 	local rand1, rand2 = self[3], self[1] * self[5] + self[2]
 	local rand3 = rand2 % rand1
@@ -38,19 +51,6 @@ end
 
 function Random:NextInteger(floor, ceil)
 	return math.floor(self:NextNumber(floor, ceil))
-end
-
-local function CopyTable(Table)
-	local clone = {}
-	for i, v in pairs(Table) do
-		if type(v) == "table" then
-			clone[i] = CopyTable(v)
-		else
-			clone[i] = v
-		end
-	end
-
-	return clone
 end
 
 function Random:Clone()
