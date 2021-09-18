@@ -26,10 +26,10 @@ function Random:NextNumber(floor, ceil)
 		if floor == 0 then
 			return rand3
 		else
-			return 1 + (rand3 % floor)
+			return 1 + rand3 % floor
 		end
 	else
-		return floor + (rand3 % (ceil - floor + 1))
+		return floor + rand3 % ceil - floor + 1
 	end
 end
 
