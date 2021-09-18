@@ -27,5 +27,8 @@ This method can be useful for branching off the results of the RNG.
 In computer science, multiply-with-carry (MWC) is a method invented by George Marsaglia[1] for generating sequences of random integers based on an initial set from two to many thousands of randomly chosen seed values. The main advantages of the MWC method are that it invokes simple computer integer arithmetic and leads to very fast generation of sequences of random numbers with immense periods, ranging from around 260 to 22000000.
 
 As with all pseudorandom number generators, the resulting sequences are functions of the supplied seed values.
+
+Roblox's Random is used to generate high-quality pseudorandom numbers from a dedicated internal state, the alghorithm Roblox uses is the XSH-RR variant of the PCG family.
+
 ### https://handwiki.org/wiki/Multiply-with-carry
 ### https://devforum.roblox.com/t/a-random-feature/64517
