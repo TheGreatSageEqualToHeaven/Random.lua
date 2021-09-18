@@ -3,7 +3,7 @@ SuperClass.__index = SuperClass
 
 --// Added by my boyfriend
 local mathfloor = math and math.floor or function(n)
-    return n - n % 1
+	return n - n % 1
 end
 
 local function NormalizeNumber(num)
@@ -34,10 +34,10 @@ end
 function SuperClass:NextNumber(floor, ceil)
 	local rand1, rand2 = self[3], self[1] * self[5] + self[2]
 	local rand3 = rand2 % rand1 + self[6]
-  self[6] = self[6] + 1
+	self[6] = self[6] + 1
 
-	self[5] = rand3 
-	self[2] = mathfloor(rand2 / rand1) 
+	self[5] = rand3
+	self[2] = mathfloor(rand2 / rand1)
 
 	if not floor then
 		return rand3 / 0x10000
@@ -68,7 +68,7 @@ function Random.new(seed)
 	object[1], object[2], object[3] = 1103515245, 12345, 0x10000
 	object[4] = object[2]
 	object = RandomizeSeed(seed, object)
-  object[6] = 1
+	object[6] = 1
 
 	return object
 end
